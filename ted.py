@@ -539,6 +539,11 @@ async def on_ready():
             print(f"❌ Failed to send DM: {e}")
     else:
         print("❌ User not found. Double-check the user ID.")
+
+@bot.command(name="ping")
+async def ping(ctx):
+    await ctx.send("Pong! 🏓")
+
 # Debug prints (optional)
 # print(get_weekly_highlights(1))
 # print(get_year_to_date_stats())
