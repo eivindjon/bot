@@ -533,7 +533,7 @@ async def on_ready():
     user = await bot.fetch_user(OWNER_ID)
     if user:
         try:
-            await user.send(f"🚀 **The bot is now online!**\nI'm ready to handle commands, master.")
+            await user.send(f"🚀 **The bot is now online!**\nI'm ready to handle commands!")
             print(f"✅ DM sent to {user.name}")
         except Exception as e:
             print(f"❌ Failed to send DM: {e}")
@@ -543,7 +543,16 @@ async def on_ready():
 @bot.command(name="ping")
 async def ping(ctx):
     await ctx.send("Pong! 🏓")
-
+    # Get the user by their Discord ID
+    user = await bot.fetch_user(OWNER_ID)
+    if user:
+        try:
+            await user.send(f"🚀 **The bot is now online!**\nI'm ready to handle commands!")
+            print(f"✅ DM sent to {user.name}")
+        except Exception as e:
+            print(f"❌ Failed to send DM: {e}")
+    else:
+        print("❌ User not found. Double-check the user ID.")
 # Debug prints (optional)
 # print(get_weekly_highlights(1))
 # print(get_year_to_date_stats())
