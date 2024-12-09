@@ -25,6 +25,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 API_BASE_URL = "https://intervals.icu/api/v1"
 #TEST AV AUTOUPDATE!!
+# TEST 2 av auto!
 # =========================
 # Parse ATHLETE_IDS from the environment
 # =========================
