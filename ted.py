@@ -18,9 +18,11 @@ load_dotenv()
 # =========================
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 API_KEY = os.getenv("INTERVALS_ICU_API_KEY")
+OWNER_ID = int(os.environ.get("DISCORD_OWNER_ID", "YOUR_USER_ID"))  # Replace "YOUR_USER_ID" with your actual Discord user ID
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True  # Required for fetching user objects
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 API_BASE_URL = "https://intervals.icu/api/v1"
@@ -521,6 +523,22 @@ async def cmd_bests(ctx):
 
     await ctx.send(embed=embed)
 
+# Event to notify when bot is ready
+@bot.event
+async def on_ready():
+    """This event is triggered when the bot is online and ready."""
+    print(f'✅ {bot.user.name} is now online!')
+    
+    # Get the user by their Discord ID
+    user = await bot.fetch_user(OWNER_ID)
+    if user:
+        try:
+            await user.send(f"🚀 **The bot is now online!**\nI'm ready to handle commands, master.")
+            print(f"✅ DM sent to {user.name}")
+        except Exception as e:
+            print(f"❌ Failed to send DM: {e}")
+    else:
+        print("❌ User not found. Double-check the user ID.")
 # Debug prints (optional)
 # print(get_weekly_highlights(1))
 # print(get_year_to_date_stats())
