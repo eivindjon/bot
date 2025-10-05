@@ -17,7 +17,7 @@ load_dotenv()
 # Configuration
 # =========================
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-API_KEY = os.getenv("INTERVALS_ICU_API_KEY")
+API_KEY = "2wrptic4i0cc2ydsoqz47g68o"
 OWNER_ID = int(os.environ.get("DISCORD_OWNER_ID", "YOUR_USER_ID"))  # Replace "YOUR_USER_ID" with your actual Discord user ID
 
 intents = discord.Intents.default()
@@ -562,3 +562,4 @@ async def ping(ctx):
 # Uncomment to run the bot
 if __name__ == "__main__":
    bot.run(TOKEN)
+
